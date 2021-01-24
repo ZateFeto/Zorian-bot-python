@@ -6,6 +6,15 @@ import random
 from replit import db
 from keep_alive import keep_alive
 
+from discord.ext.commands import Bot
+
+def setup(bot):
+    bot.add_cog(MembersCog(bot))
+
+bot.add_cog(Greetings(bot))
+
+load_extension(Greetings)
+
 
 client = discord.Client()
 

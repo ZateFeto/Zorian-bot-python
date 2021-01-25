@@ -3,30 +3,23 @@ from discord.ext import commands
 from replit import db
 from keep_alive import keep_alive
 
-from discord.ext.commands import Bot
+client = commands.Bot(command_prefix = os.getenv('BOT_PREFIX'))
 
-# bot.load_extension('cogs.greetings')
+@client.command()
+async def load(ctx, extension):
+  client.load_extension(f'cogs.{extension}')
 
-client = discord.Client()
+@client.command()
+async def unload(ctx, extension):
+  client.load_extension(f'cogs.{extension}')
 
-bot = discord.ext.commands.Bot(command_prefix = "$");
-
-bot.load_extension('cogs.greetings')
-bot.load_extension('cogs.greetings2')
+for filename in os.listdir('./cogs'):
+  if filename.endswith('.py'):
+    client.load_extension(f'cogs.{filename[:-3]}')
 
 @client.event
 async def on_ready():
   print('We have logged in as {0.user}'.format(client))
-
-@client.event
-async def on_message(message):
-  if message.author == client.user:
-    return
-
-  msg = message.content
-
-  if msg.startswith('~hello'):
-    await message.channel.send('Hello!')
 
 keep_alive()
 client.run(os.getenv('BOT_TOKEN'))

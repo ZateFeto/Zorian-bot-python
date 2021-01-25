@@ -1,3 +1,6 @@
+import os, sys, discord, platform, random, aiohttp, json
+from discord.ext import commands
+
 class Greetings(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,4 +22,6 @@ class Greetings(commands.Cog):
             await ctx.send('Hello {0.name}... This feels familiar.'.format(member))
         self._last_member = member
 
-        
+def setup(bot):
+
+    bot.add_cog(Greetings(bot))

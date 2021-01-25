@@ -1,23 +1,18 @@
-import discord
-import os
-import requests
-import json
-import random
+import os, sys, discord, platform, random, aiohttp, json, requests
+from discord.ext import commands
 from replit import db
 from keep_alive import keep_alive
 
 from discord.ext.commands import Bot
 
-def setup(bot):
-    bot.add_cog(MembersCog(bot))
-
-bot.add_cog(Greetings(bot))
-
-load_extension(Greetings)
-
+# bot.load_extension('cogs.greetings')
 
 client = discord.Client()
 
+bot = discord.ext.commands.Bot(command_prefix = "$");
+
+bot.load_extension('cogs.greetings')
+bot.load_extension('cogs.greetings2')
 
 @client.event
 async def on_ready():

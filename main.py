@@ -5,6 +5,7 @@ from keep_alive import keep_alive
 
 from discord import voice_client
 
+intents = discord.Intents.all()
 
 client = commands.Bot(command_prefix = os.getenv('BOT_PREFIX'))
 # bot = commands.Bot(command_prefix = os.getenv('BOT_PREFIX'))

@@ -17,7 +17,7 @@ class SUserM(commands.Cog):
         await ctx.send(f"Successfully muted {user}!")
       elif user.voice.mute:
         await ctx.send(f"{user} is already muted!")
-      elif user is None:
+      elif ctx is None:
         await ctx.send(f"Who do you want to mute?")
       elif user.voice_state is None:
         await ctx.send(f"{user} is not in a voice channel!")
@@ -29,7 +29,7 @@ class SUserM(commands.Cog):
         await ctx.send(f"Successfully unmuted {user}!")
       elif not user.voice.mute:
         await ctx.send(f"{user} is already unmuted!")
-      elif user is None:
+      elif ctx is None:
         await ctx.send(f"Who do you want to mute?")
       elif user.voice_state is None:
         await ctx.send(f"{user} is not in a voice channel!")

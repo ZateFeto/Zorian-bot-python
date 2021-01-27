@@ -14,11 +14,13 @@ client = commands.Bot(command_prefix = os.getenv('BOT_PREFIX'))
 async def load(ctx, extension):
   client.load_extension(f'cogs.{extension}')
   client.load_extension(f'Commands.{extension}')
+  client.load_extension(f'Music.{extension}')
 
 @client.command()
 async def unload(ctx, extension):
   client.load_extension(f'cogs.{extension}')
   client.load_extension(f'Commands.{extension}')
+  client.load_extension(f'Music.{extension}')
 
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
@@ -28,6 +30,9 @@ for filename in os.listdir('./Commands'):
   if filename.endswith('.py'):
     client.load_extension(f'Commands.{filename[:-3]}')
 
+# for filename in os.listdir('./Music'):
+#   if filename.endswith('.py'):
+#     client.load_extension(f'Music.{filename[:-3]}')
 
 @client.event
 async def on_ready():

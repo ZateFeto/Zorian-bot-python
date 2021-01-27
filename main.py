@@ -30,9 +30,9 @@ for filename in os.listdir('./Commands'):
   if filename.endswith('.py'):
     client.load_extension(f'Commands.{filename[:-3]}')
 
-# for filename in os.listdir('./Music'):
-#   if filename.endswith('.py'):
-#     client.load_extension(f'Music.{filename[:-3]}')
+for filename in os.listdir('./Music'):
+  if filename.endswith('.py'):
+    client.load_extension(f'Music.{filename[:-3]}')
 
 @client.event
 async def on_ready():
